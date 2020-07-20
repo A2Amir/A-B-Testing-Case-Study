@@ -1,6 +1,6 @@
 # A/B Testing Case Study
  
- In the previous repostories, you've learned about conceptual and statistical components that go in designing and analyzing an experiment. In this Repo, you'll see how the things you've learned can be used in a case study.  You'll go through the design process for a web-based experiment including:
+ In the previous repostories, you've learned about [conceptual](https://github.com/A2Amir/Experimental-Design) and [statistical](https://github.com/A2Amir/Statistical-Considerations-in-Testing) components that go in designing and analyzing an experiment. In this Repo, you'll see how the things you've learned can be used in a case study.  You'll go through the design process for a web-based experiment including:
  
    * Build a user funnel.
    * Decide on metrics.
@@ -62,7 +62,7 @@ From our user funnel, we should consider two things:
 * where and how we should split users into experiment groups (The choice of unit of diversion).
 * what metrics we will use to track the success or failure of the experimental manipulation. 
 
-The choice of unit of diversion (**the point at which we divide observations into groups**) may affect what metrics we can use, and whether the metrics we record should be considered invariant or evaluation metrics. Three main categories of diversion were presented in [this repo]() course: 
+The choice of unit of diversion (**the point at which we divide observations into groups**) may affect what metrics we can use, and whether the metrics we record should be considered invariant or evaluation metrics. Three main categories of diversion were presented in [this repo](https://github.com/A2Amir/Experimental-Design) course: 
 
 
 
