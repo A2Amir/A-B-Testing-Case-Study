@@ -59,9 +59,28 @@ When it comes to license purchasing, it's possible that users don't come back af
 
 From our user funnel, we should consider two things: 
 
-* where and how we should split users into experiment groups
+* where and how we should split users into experiment groups (The choice of unit of diversion).
 * what metrics we will use to track the success or failure of the experimental manipulation. 
 
-The choice of unit of diversion (**the point at which we divide observations into groups**) may affect what metrics we can use, and whether the metrics we record should be considered invariant or evaluation metrics. **A cookie-based diversion** seems best in this case for dividing visitors into experimental groups since we can split visitors on their initial visit and it's fairly reliable for tracking.
+The choice of unit of diversion (**the point at which we divide observations into groups**) may affect what metrics we can use, and whether the metrics we record should be considered invariant or evaluation metrics. Three main categories of diversion were presented in [this repo]() course: 
+
+
+
+* An **event-based diversion** (like a pageview) can provide many observations to draw conclusions from, but doesn't quite hit the mark for this case. If the condition changes on each pageview, then a visitor might get a different experience on each homepage visit. **Event-based diversion is much better when the changes aren't as easily visible to users, to avoid disruption of experience**. In addition, pageview-based diversion would let us know how many times the download page was accessed from each condition, but can't go any further in tracking how many actual downloads were generated from each condition.
+
+* Diverting based on **account or user ID** can be stable, but it's not the right choice in this case. Since visitors only register after getting to the download page, this is too late to introduce the new homepage to people who should be assigned to the experimental condition.
+
+* This leaves the consideration of **cookie-based diversion**, which feels like the right choice. We can assign a cookie to each visitor upon their first page hit, which allows them to be separated into the control and experimental groups. Cookies also allow tracking of each visitor hitting each page, recording whether or not they eventually hit the download page and then whether or not they actually register an account and perform the download.**A cookie-based diversion** seems best in this case for dividing visitors into experimental groups since we can split visitors on their initial visit and it's fairly reliable for tracking.
+
+
+
+That's not to say that the cookie-based diversion is perfect. The usual cookie-based diversion issues apply: we can get some inconsistency in counts if users enter the site via incognito window, different browsers, or cookies that expire or get deleted before they make a download. This kind of assignment 'dilution' could dampen the true effect of our experimental manipulation. As a simplification, however, we'll assume that this kind of assignment dilution will be small, and ignore its potential effects.
+
+
+
+
+
+
+
 
 
