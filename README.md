@@ -1,2 +1,67 @@
 # A/B Testing Case Study
  
+ In the previous repostories, you've learned about conceptual and statistical components that go in designing and analyzing an experiment. In this Repo, you'll see how the things you've learned can be used in a case study.  You'll go through the design process for a web-based experiment including:
+ 
+   * Build a user funnel.
+   * Decide on metrics.
+   * Perform experiment sizing.
+   * Analyze result.
+
+
+
+# 1. Scenario Description
+
+Let's say that you're working for a fictional productivity software company that is looking for ways to increase the number of people who pay for their software. The way that the software is currently set up, users can download and use the software free of charge, for a 7-day trial. After the end of the trial, users are required to pay for a license to continue using the software.
+
+One idea that the company wants to try is to change the layout of the homepage to emphasize more prominently and higher up on the page that there is a 7-day trial available for the company's software. The current fear is that some potential users are missing out on using the software because of a lack of awareness of the trial period. If more people download the software and use it in the trial period, the hope is that this entices more people to make a purchase after seeing what the software can do.
+
+In this case study, you'll go through steps for planning out an experiment to test the new homepage. You will start by **constructing a user funnel** and **deciding on metrics to track**. You'll also **perform experiment sizing to see how long it should be run**. Afterwards, you'll be given some data collected for the experiment, **perform statistical tests to analyze the results**, and come to conclusions regarding how effective the new homepage changes were for bringing in more users.
+
+# 2. Building a Funnel
+
+Before we do anything else, the first thing we should do is specify the objective or goal of our study:
+
+> Revising the structure of the homepage will increase the number of people that download the software and, ultimately, the number of people that purchase a license.
+
+
+Now, we should think about the activities that a user will take on the site that are relevant to measuring our objective. This path or funnel will help us figure out how we will create experimental condition groups and which metrics we'll need to track to measure the experiment's effect. To help you construct the funnel, here's some information about the way the company's website is structured, and how the software induces users to purchase a license.
+
+The company's website has five main sections:
+
+    1. the homepage;
+    2. a section with additional information, gallery, and examples;
+    3. a page for users to download the software;
+    4. a page for users to purchase a license; and
+    5. a support sub-site with documentation and FAQs for the software.
+
+For the software itself, the website requires that users create an account in order to download the software program. The program is usable freely for seven days after download. When the trial period is hit, the program will bring up a dialog box that takes the user to the license page. After purchasing a license, the user will receive a unique code associated with their site account. This code can then be used with the program to register it with that user, and the program can be used thereafter without issue.
+
+
+#### A straightforward funnel might include the following steps:
+
+        1.  Visit homepage
+        2.  Visit download page
+        3.  Sign up for an account
+        4.  Download software
+        5.  After 7-day trial, software takes user to license-purchase page
+        6.  Purchase license
+   
+   Note that it is possible for the visitor to drop from the funnel after each step. There might be additional steps that a user might take between visiting the homepage and visiting the download page that aren't accounted for in the above funnel. For example, someone might want to check out the additional informational pages before visiting the download page, or even visit the license purchase page to check the license price before even deciding to download. Considering the amount of browsing that a visitor could perform on the page, it might be simplest just to track whether or not a user gets to the download page at some point, without worrying about the many paths that they could have taken to get there.
+
+
+#### Atypical events
+There are a few events in the expected funnel that might not correspond with the visitors we want to target. For example, there might be users on the homepage who aren't new users. Users who already have a license might just be visiting the homepage as a way to access the support sub-site. A user who wants to buy a license might also come in to the license page through the homepage, rather than directly from the software.
+
+When it comes to license purchasing, it's possible that users don't come back after exactly seven days. Some users might come back early and make their purchase during their trial period. Alternatively, a user might end up taking more than seven days to decide to make their purchase, coming back days after the end of the trial. Anticipating scenarios like this can be useful for planning the design, and coming up with metrics that come as close as possible to measuring desired effects.
+
+
+# 2. Deciding on Metrics
+
+From our user funnel, we should consider two things: 
+
+* where and how we should split users into experiment groups
+* what metrics we will use to track the success or failure of the experimental manipulation. 
+
+The choice of unit of diversion (**the point at which we divide observations into groups**) may affect what metrics we can use, and whether the metrics we record should be considered invariant or evaluation metrics. **A cookie-based diversion** seems best in this case for dividing visitors into experimental groups since we can split visitors on their initial visit and it's fairly reliable for tracking.
+
+
