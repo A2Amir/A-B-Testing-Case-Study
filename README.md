@@ -87,4 +87,4 @@ As for the other metrics(the ratio between the number of licenses and number of 
 
 Product usage statistics like the average time the software was used in the trial period are potentially interesting features, but aren't directly related to our experiment. We might not have a strong feeling about what kind of effect the homepage will have on people that actually download the software. Stated differently, product usage isn't a direct target of the homepage manipulation. Certainly, these statistics might help us dig deeper into the reasons for observed effects after an experiment is complete. They might even point toward future changes and experiments to conduct. But in terms of experiment success, product usage shouldn't be considered an invariant or evaluation metric.
 
-
+ 
