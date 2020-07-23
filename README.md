@@ -92,3 +92,28 @@ Product usage statistics like the average time the software was used in the tria
 
 
  
+# 2. Experiment Sizing
+
+Now that we have our main metrics selected: **number of cookies as an invariant metric**, and **the download rate and license purchase rate (relative to number of cookies) as evaluation metrics**, we should take a look at the feasibility of the experiment in terms of the amount of time it will take to run. 
+
+Because we have two evaluation metrics of interest, we should make sure that we are **choosing an appropriate significance level to conduct each test** in order to preserve a maximum overall Type I error rate of .05. Since we would be happy to deploy the new homepage if either download rate or license purchase rate showed a statistically significant increase, performing both individual tests at a .05 error rate carries the risk of making too many Type I errors. As such, we'll apply **the Bonferroni correction** to run each test at a .025 error rate so as to protect against making too many errors. If it were the case that we needed to see both metrics with a statistically significant increase, then we wouldn't need to include the correction on the individual tests.
+
+Recent history shows that there are about **3250 unique visitors per day**, with slightly more visitors on Friday through Monday, than the rest of the week. There are about **520 software downloads per day (a .16 rate)** and about **65 licenses purchased each day (a .02 rate)**. In an ideal case, both the download rate and license purchase rate should increase with the new homepage; a statistically significant negative change should be a sign to not deploy the homepage change. However, if only one of our metrics shows a statistically significant positive change we should be happy enough to deploy the new homepage.
+
+* Let's say that we want to detect an increase of 50 downloads per day.To calculate how many days of data we need to collect in order to get enough visitors to detect this new rate at an overall 5% Type I error rate and at 80% power I used the code presented below:
+~~~python
+from statsmodels.stats.power import NormalIndPower
+from statsmodels.stats.proportion import proportion_effectsize
+s = NormalIndPower().solve_power(effect_size=proportion_effectsize(520/3250,570/3250), power=0.8, alpha=0.05/2)
+
+print(s)
+print(s / 3250 )
+
+
+11204.701585895478
+3.4476004879678395
+
+~~~
+We'd need at least four days to get the 11204 visitors in each condition to detect a 0.015 (570/3250 -520/3250) increase in the download rate.
+
+
