@@ -114,6 +114,22 @@ print(s / 3250 )
 3.4476004879678395
 
 ~~~
-We'd need at least four days to get the 11204 visitors in each condition to detect a 0.015 (570/3250 -520/3250) increase in the download rate.
 
+**We'd need at least four days to get the 11204 visitors in each condition to detect a 0.015 (570/3250 -520/3250) increase in the download rate.**
+
+* What if we wanted to detect an increase of 10 license purchases per day (.023 rate). In order to caculate how many days of data  we need to collect in order to get enough visitors to detect this new rate at an overall 5% Type I error rate and at 80% power I used the below code:
+
+~~~python
+from statsmodels.stats.power import NormalIndPower
+from statsmodels.stats.proportion import proportion_effectsize
+s = NormalIndPower().solve_power(effect_size=proportion_effectsize(65/3250,75/3250), power=0.8, alpha=0.05/2)
+
+print(s)
+print(s / 3250 )
+
+42263.140542608366
+13.004043243879497
+
+~~~
+**We'd need at least fourteen days to get the 42263 visitors in each condition to detect a 0.0031 (75/3250 -65/3250) increase in the download rate.**
 
