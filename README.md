@@ -92,7 +92,7 @@ Product usage statistics like the average time the software was used in the tria
 
 
  
-# 2. Experiment Sizing
+# 3. Experiment Sizing
 
 Now that we have our main metrics selected: **number of cookies as an invariant metric**, and **the download rate and license purchase rate (relative to number of cookies) as evaluation metrics**, we should take a look at the feasibility of the experiment in terms of the amount of time it will take to run. 
 
@@ -133,3 +133,8 @@ print(s / 3250 )
 ~~~
 **We'd need at least fourteen days to get the 42263 visitors in each condition to detect a 0.0031 (75/3250 -65/3250) increase in the download rate.**
 
+One thing that isn't accounted for in the base experiment length calculations is that there is going to be a delay between when users download the software and when they actually purchase a license. That is, when we start the experiment, there could be about seven days before a user account associated with a cookie actually comes back to make their purchase. Any purchases observed within the first week might not be attributable to either experimental condition. As a way of accounting for this, we'll run the experiment for about one week longer to allow those users who come in during the third week a chance to come back and be counted in the license purchases tally.
+
+
+
+# 3. Validity, Bias, and Ethics 
