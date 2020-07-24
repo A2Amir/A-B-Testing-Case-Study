@@ -1,6 +1,10 @@
 # A/B Testing Case Study
  
- In the previous repostories, I've talked about the [conceptual](https://github.com/A2Amir/Experimental-Design) and [statistical](https://github.com/A2Amir/Statistical-Considerations-in-Testing) components that go in designing and analyzing an experiment. In this Repo, you'll see how these components you've learned can be used in a case study.  You'll go through the design process for a web-based experiment including:
+ In the previous repostories, I've talked about 
+ *  1. [The Experimental Design](https://github.com/A2Amir/Experimental-Design) 
+ *  2. [The Statistical Considerations in Testing](https://github.com/A2Amir/Statistical-Considerations-in-Testing) 
+ 
+ components that go in designing and analyzing an experiment. In this Repo, you'll see how these components you've learned can be used in a case study.  You'll go through the design process for a web-based experiment including:
  
    * Building a user funnel.
    * Deciding on metrics.
