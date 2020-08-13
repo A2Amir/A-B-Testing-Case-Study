@@ -197,7 +197,7 @@ One tricky point to consider is that there is a seven or eight day delay between
 data.iloc[7:,:].sum()
 
 
-Day                       407
+
 Control Cookies         35681
 Control Downloads        5808
 Control Licenses          695
