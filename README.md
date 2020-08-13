@@ -187,7 +187,7 @@ plt.title('the mean of %.3f and the standard deviation of %.3f'%(np.mean(data['E
   <img src="/data/1.PNG" alt="" width="700" height="400" >
  </p>
 
-**For the test of the invariant metric, number of cookies, there were a larger number of cookies recorded in the experiment group, 47 346 vs. 46 851. This ends up generating a p-value of 0.107 (z = -1.61), which is within a reasonable range under the null hypothesis. Since we lack sufficient reason to reject the null, we can continue on to evaluating the evaluation metrics. (Note that this doesn't mean that there wasn't something actually different about the cookie counts between groups, only that we couldn't detect it if such a difference existed.)**
+**For the test of the invariant metric, number of cookies, there were a larger number of cookies recorded in the experiment group, 47 346 vs. 46 851. This ends up generating a p-value of 0.107 , which is within a reasonable range under the null hypothesis. Since we lack sufficient reason to reject the null, we can continue on to evaluating the evaluation metrics. (Note that this doesn't mean that there wasn't something actually different about the cookie counts between groups, only that we couldn't detect it if such a difference existed.)**
 
 
 ### B. Evaluation Metrics
