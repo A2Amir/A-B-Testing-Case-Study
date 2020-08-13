@@ -157,7 +157,7 @@ Finally, for ethical issues, the changes to the homepage should be benign and pr
 By looking at [the collected data](https://github.com/A2Amir/A-B-Testing-Case-Study/blob/master/data/homepage-experiment-data.csv) can be found that  data was collected for 29 days. As a reminder of the discussion on experiment sizing, it was found that a three-week period was needed to collect enough visitors to achieve our desired power level. Eight additional days of collection were added to allow visitors in the last week to complete their trials and come back to make a purchase – if you look at the data linked, you will see that it takes about eight days before the license purchases reaches its steady level.
 
 
-#### Invariant Metric
+### Invariant Metric
 
 First, we should check our invariant metric (the number of cookies assigned to each group). If there is a statistically significant difference detected, then we shouldn't move on to the evaluation metrics right away. We'd need to first dig deeper to see if there was an issue with the group-assignment procedure, or if there is something about the manipulation that affected the number of cookies observed, before we feel secure about analyzing and interpreting the evaluation metrics.
 
@@ -186,7 +186,9 @@ plt.title('the mean of %.3f and the standard deviation of %.3f'%(np.mean(data['E
   <img src="/data/1.PNG" alt="" width="700" height="400" >
  </p>
 
-#### Evaluation Metrics
+**For the test of the invariant metric, number of cookies, there were a larger number of cookies recorded in the experiment group, 47 346 vs. 46 851. This ends up generating a p-value of 0.107 (z = -1.61), which is within a reasonable range under the null hypothesis. Since we lack sufficient reason to reject the null, we can continue on to evaluating the evaluation metrics. (Note that this doesn't mean that there wasn't something actually different about the cookie counts between groups, only that we couldn't detect it if such a difference existed.)**
+
+### Evaluation Metrics
 
 Assuming that the invariant metric passed inspection, we can move on to the evaluation metrics: **download rate and license purchasing rate**. For a refresher, **the download rate is the total number of downloads divided by the number of cookies, and the license purchasing rate the number of licenses divided by the number of cookies**.
 
