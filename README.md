@@ -158,8 +158,32 @@ By looking at [the collected data]() can be found that  data was collected for 2
 
 #### Invariant Metric
 
-First, we should check our invariant metric (the number of cookies assigned to each group).  by checking the invariant metric we can see **there is no significant difference 
-(sum of Control Cookies = 46851, sum of Experiment Cookies = 47346)** and  If there is a statistically significant difference detected, then we shouldn't move on to the evaluation metrics right away. We'd need to first dig deeper to see if there was an issue with the group-assignment procedure, or if there is something about the manipulation that affected the number of cookies observed, before we feel secure about analyzing and interpreting the evaluation metrics.
+First, we should check our invariant metric (the number of cookies assigned to each group). If there is a statistically significant difference detected, then we shouldn't move on to the evaluation metrics right away. We'd need to first dig deeper to see if there was an issue with the group-assignment procedure, or if there is something about the manipulation that affected the number of cookies observed, before we feel secure about analyzing and interpreting the evaluation metrics.
+
+~~~python
+import seaborn
+import pandas as pd 
+import numpy as np
+
+data = pd .read_csv('./data/homepage-experiment-data.csv',header=0)
+
+plt.figure(figsize=(15,5))
+plt.subplot(1,2,1)
+# left plot: showing kde lumps with the default settings
+sb.distplot(data['Control Cookies'].values,hist=False,rug=True ,rug_kws={'color':'r'})
+plt.title('the mean of %.3f and the standard deviation of %.3f'%(np.mean(data['Control Cookies'].values),np.std(data['Control Cookies'].values)))
+
+plt.subplot(1,2,2)
+
+# central plot: kde with narrow bandwidth to show individual probability lumps
+sb.distplot(data['Experiment Cookies'].values,hist=False,rug=True ,rug_kws={'color':'r'})
+plt.title('the mean of %.3f and the standard deviation of %.3f'%(np.mean(data['Experiment Cookies'].values),np.std(data['Experiment Cookies'].values)))
+
+~~~
+
+<p align="center">
+  <img src="/data/1.PNG" alt="" width="500" height="300" >
+ </p>
 
 #### Evaluation Metrics
 
