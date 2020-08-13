@@ -154,7 +154,8 @@ Finally, for ethical issues, the changes to the homepage should be benign and pr
 
 # 5. Analyze Data
 
-By looking at [the collected data]() can be found that  data was collected for 29 days. As a reminder of the discussion on experiment sizing, it was found that a three-week period was needed to collect enough visitors to achieve our desired power level. Eight additional days of collection were added to allow visitors in the last week to complete their trials and come back to make a purchase – if you look at the data linked, you will see that it takes about eight days before the license purchases reaches its steady level.
+By looking at [the collected data](https://github.com/A2Amir/A-B-Testing-Case-Study/blob/master/data/homepage-experiment-data.csv) can be found that  data was collected for 29 days. As a reminder of the discussion on experiment sizing, it was found that a three-week period was needed to collect enough visitors to achieve our desired power level. Eight additional days of collection were added to allow visitors in the last week to complete their trials and come back to make a purchase – if you look at the data linked, you will see that it takes about eight days before the license purchases reaches its steady level.
+
 
 #### Invariant Metric
 
@@ -182,10 +183,41 @@ plt.title('the mean of %.3f and the standard deviation of %.3f'%(np.mean(data['E
 ~~~
 
 <p align="center">
-  <img src="/data/1.PNG" alt="" width="500" height="300" >
+  <img src="/data/1.PNG" alt="" width="700" height="400" >
  </p>
 
 #### Evaluation Metrics
 
-Assuming that the invariant metric passed inspection, we can move on to the evaluation metrics: download rate and license purchasing rate. For a refresher, the download rate is the total number of downloads divided by the number of cookies, and the license purchasing rate the number of licenses divided by the number of cookies.
+Assuming that the invariant metric passed inspection, we can move on to the evaluation metrics: **download rate and license purchasing rate**. For a refresher, **the download rate is the total number of downloads divided by the number of cookies, and the license purchasing rate the number of licenses divided by the number of cookies**.
+
+One tricky point to consider is that there is a seven or eight day delay between when most people download the software and when they make a purchase. There's no direct way of attributing cookies all the way through license purchases due to the daily aggregation of results, so the best we can do is to make a justified argument for handling the data. To answer the question about the license purchasing rate, you should only take the cookies observed through day 21 as the denominator of the ratio as being responsible for all of the license purchases observed.
+
+~~~python
+
+data.iloc[7:,:].sum()
+
+
+Day                       407
+Control Cookies         35681
+Control Downloads        5808
+Control Licenses          695
+Experiment Cookies      35872
+Experiment Downloads     6503
+Experiment Licenses       710
+dtype: int64
+
+control_download_rate = round(5808/35681,4)
+print(control_download_rate)  -> 0.1628
+
+
+control_license_purchase = round(695/35681,4)
+print(control_license_purchase) -> 0.0195
+
+
+experiment_download_rate  = round(6503/35872,4)
+print(experiment_download_rate) -> 0.1813
+
+experiment_license_purchase = round(710/35872,4)
+print(experiment_license_purchase) -> 0.0198
+~~~
 
