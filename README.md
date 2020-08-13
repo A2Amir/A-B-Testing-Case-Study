@@ -10,7 +10,8 @@
    * Deciding on metrics.
    * Performing experiment sizing.
    * Checking Validity, Bias, and Ethics
-   * Analyzing data.
+   * Analyzing data
+   * Draw Conclusions
 
 
 
@@ -199,8 +200,6 @@ One tricky point to consider is that there is a seven or eight day delay between
 
 data.iloc[7:,:].sum()
 
-
-
 Control Cookies         35681
 Control Downloads        5808
 Control Licenses          695
@@ -224,4 +223,6 @@ experiment_license_purchase = round(710/35872,4)
 print(experiment_license_purchase) -> 0.0198
 ~~~
 
-For the first evaluation metric, download rate, there was an extremely convincing effect. An absolute increase from 0.1628 to 0.1813 results in a z-score of 7.87, well beyond any standard significance bound. However, the second evaluation metric, license purchasing rate, only shows a small increase from 0.0195 to 0.0198 (following the assumption that only the first 21 days of cookies account for all purchases). This results in a p-value of 0.398 (z = 0.26).
+**For the first evaluation metric, download rate, there was an extremely convincing effect. An absolute increase from 0.1628 to 0.1813 results in a z-score of 7.87, well beyond any standard significance bound. However, the second evaluation metric, license purchasing rate, only shows a small increase from 0.0195 to 0.0198 (following the assumption that only the first 21 days of cookies account for all purchases). This results in a p-value of 0.398 (z = 0.26).**
+
+# 6. Draw Conclusions
