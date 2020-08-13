@@ -10,11 +10,11 @@
    * Deciding on metrics.
    * Performing experiment sizing.
    * Checking Validity, Bias, and Ethics
-   * Analyzing result.
+   * Analyzing data.
 
 
 
-# 1. Scenario Description
+# Scenario Description
  
  
 Let's say that you're working for a fictional productivity software company that is looking for ways to increase the number of people who pay for their software. The way that the software is currently set up, users can download and use the software free of charge, for a 7-day trial. After the end of the trial, users are required to pay for a license to continue using the software.
@@ -23,7 +23,7 @@ Let's say that you're working for a fictional productivity software company that
 
 In this case study, you'll go through steps for planning out an experiment to test the new homepage. You will start by **constructing a user funnel** and **deciding on metrics to track**. You'll also **perform experiment sizing to see how long it should be run**. Afterwards, you'll be given some data collected for the experiment, **perform statistical tests to analyze the results**, and come to conclusions regarding how effective the new homepage changes were for bringing in more users.
 
-# 2. Building a Funnel
+# 1. Building a Funnel
 
 Before we do anything else, the first thing we should do is specify **the objective or goal of our study**:
 
@@ -134,16 +134,16 @@ print(s)
 print(s / 3250 )
 
 42263.140542608366
-13.004043243879497
+21.004043243879497
 
 ~~~
-**We'd need at least fourteen days to get the 42263 visitors in each condition to detect a 0.0031 (75/3250 -65/3250) increase in the download rate.**
+**We'd need at least 21 days to get the 42263 visitors in each condition to detect a 0.0031 (75/3250 -65/3250) increase in the download rate.**
 
 One thing that isn't accounted for in the base experiment length calculations is that there is going to be a delay between when users download the software and when they actually purchase a license. That is, when we start the experiment, there could be about seven days before a user account associated with a cookie actually comes back to make their purchase. Any purchases observed within the first week might not be attributable to either experimental condition. As a way of accounting for this, we'll run the experiment for about one week longer to allow those users who come in during the third week a chance to come back and be counted in the license purchases tally.
 
 
 
-# 3. Validity, Bias, and Ethics 
+# 4. Validity, Bias, and Ethics 
 
 We probably don't have too much to worry about in terms of validity. For conceptual validity, the evaluation metrics are directly aligned with the experimental goals, no abstraction needed. Internal validity is maintained by performing an experiment with properly-handled randomization and controls. We don't really need to answer to external validity since we're drawing from the full site population and there's no other population we're looking to generalize to.
 
@@ -151,3 +151,17 @@ As for biases, we might think of novelty bias as being a potential issue. Howeve
 
 
 Finally, for ethical issues, the changes to the homepage should be benign and present no risk to users. Our experiment objectives are also clearly stated. Considering the low risks of the experiment, informed consent is at worst a minor concern; a standard popup to let visitors know that cookies are used to track user experience on the site will likely suffice. The largest ethics principle we should be concerned about is data sensitivity. We shouldn't get any sensitive data out of the cookie assignment and collection, though some information will be collected from the user when they go to download the software. No sensitive data is required for the metrics we've laid out, so what we should do is just aggregate daily visits, downloads, and purchase counts without looking at any individual outcomes.
+
+# 5. Analyze Data
+
+By looking at [the collected data]() can be found that  data was collected for 29 days. As a reminder of the discussion on experiment sizing, it was found that a three-week period was needed to collect enough visitors to achieve our desired power level. Eight additional days of collection were added to allow visitors in the last week to complete their trials and come back to make a purchase – if you look at the data linked, you will see that it takes about eight days before the license purchases reaches its steady level.
+
+#### Invariant Metric
+
+First, we should check our invariant metric (the number of cookies assigned to each group).  by checking the invariant metric we can see **there is no significant difference 
+(sum of Control Cookies = 46851, sum of Experiment Cookies = 47346)** and  If there is a statistically significant difference detected, then we shouldn't move on to the evaluation metrics right away. We'd need to first dig deeper to see if there was an issue with the group-assignment procedure, or if there is something about the manipulation that affected the number of cookies observed, before we feel secure about analyzing and interpreting the evaluation metrics.
+
+#### Evaluation Metrics
+
+Assuming that the invariant metric passed inspection, we can move on to the evaluation metrics: download rate and license purchasing rate. For a refresher, the download rate is the total number of downloads divided by the number of cookies, and the license purchasing rate the number of licenses divided by the number of cookies.
+
